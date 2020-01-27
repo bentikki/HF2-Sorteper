@@ -12,6 +12,10 @@ namespace Sorteper.Classes
         {
             this.suits = new List<string> { "Monkeys", "Cats", "Cows", "Sparrows", "Lions", "Dolphins", "Dogs", "Whales", "Horses", "Snakes", "Sheeps", "Snails", "Lizards", "Turtles" };
             this.CardValues = 2;
+
+            this.CreateDeck();
+            this.AddCard(0, "Old Maid / Sorteper");
+            this.Shuffle();
         }
 
     }

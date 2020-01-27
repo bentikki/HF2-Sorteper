@@ -23,6 +23,7 @@ namespace Sorteper
 
             Console.WriteLine();
             Console.WriteLine("____________________________");
+            Console.WriteLine();
             Console.WriteLine("The cards has now been delt.");
             Console.WriteLine("____________________________");
             Console.WriteLine();
@@ -37,9 +38,12 @@ namespace Sorteper
                 Console.WriteLine("Removed a pair of " + duplicate + " from your opponents hand!");
             }
             Console.WriteLine("____________________________");
+            Console.ReadKey();
 
             do
             {
+                Console.Clear();
+                Console.WriteLine("Current turn: " + game.HumanPlayer.PlayerName);
                 Console.WriteLine("____________________________");
                 Console.WriteLine("Your hand:");
                 foreach (Card card in game.HumanPlayer.Hand)
@@ -61,7 +65,9 @@ namespace Sorteper
                 Console.WriteLine("____________________________");
                 Console.WriteLine();
                 Console.WriteLine("____________________________");
+                Console.WriteLine();
                 Console.WriteLine("Your options:");
+                Console.WriteLine();
                 Console.WriteLine("1. Take card from opponents hand.");
                 Console.WriteLine("2. Shuffle your hand.");
                 Console.WriteLine("____________________________");
@@ -79,6 +85,7 @@ namespace Sorteper
 
                         byte choice = GetMenuInput(0, game.CPU.Hand.Count - 1);
                         string cardName = game.HumanPlayer.TakeCard(game.CPU, choice).CardName;
+                        Console.Clear();
                         Console.WriteLine();
                         Console.WriteLine("____________________________");
                         Console.WriteLine("You have taken " + cardName + " from your opponent!");
@@ -113,12 +120,17 @@ namespace Sorteper
                         Console.WriteLine("Your hand has been shuffled!");
                         Console.WriteLine("____________________________");
                         Console.ReadKey();
+                        Console.Clear();
                         break;
                 }
 
             } while (game.NewRound());
 
+            Console.Clear();
+            Console.WriteLine("____________________________");
+            Console.WriteLine();
             Console.WriteLine(game.EndingMessage());
+            Console.WriteLine("____________________________");
             Console.ReadKey();
         }
      

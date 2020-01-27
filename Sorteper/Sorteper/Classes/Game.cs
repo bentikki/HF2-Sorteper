@@ -29,7 +29,7 @@ namespace Sorteper.Classes
         }
         public void AddHumanPlayer(string playerName)
         {
-            Player player = new Player(playerName + "-player", true);
+            Player player = new Player(playerName + "-Player", true);
             this.playerList.Add(player);
             this.humanPlayer = player;
         }
