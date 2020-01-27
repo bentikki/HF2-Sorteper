@@ -70,5 +70,18 @@ namespace Sorteper.Classes
             return removedList;
         }
 
+        public bool HasOldMaid()
+        {
+            bool hasOldMaidBool = false;
+            for (int i = 0; i < this.Hand.Count; i++)
+            {
+                if(this.Hand[i].CardValue == 0)
+                {
+                    hasOldMaidBool = true;
+                }
+            }
+            return hasOldMaidBool;
+        }
+
     }
 }

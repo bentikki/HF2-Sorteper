@@ -29,12 +29,12 @@ namespace Sorteper
 
             foreach (string duplicate in game.HumanPlayer.RemoveDuplicates())
             {
-                Console.WriteLine("Removed a pair of " + duplicate + " from your deck!");
+                Console.WriteLine("Removed a pair of " + duplicate + " from your hand!");
             }
             Console.WriteLine("____________________________");
             foreach (string duplicate in game.CPU.RemoveDuplicates())
             {
-                Console.WriteLine("Removed a pair of " + duplicate + " from your opponents deck!");
+                Console.WriteLine("Removed a pair of " + duplicate + " from your opponents hand!");
             }
             Console.WriteLine("____________________________");
 
@@ -46,6 +46,19 @@ namespace Sorteper
                 {
                     Console.WriteLine(card.CardName);
                 }
+                string playerWithOldMaidMessage;
+                if (game.HumanPlayer.HasOldMaid())
+                {
+                    playerWithOldMaidMessage = "------You have the Old Maid!------";
+                }
+                else
+                {
+                    playerWithOldMaidMessage = "------Your opponent have the Old Maid!------";
+                }
+                Console.WriteLine("____________________________");
+                Console.WriteLine();
+                Console.WriteLine(playerWithOldMaidMessage);
+                Console.WriteLine("____________________________");
                 Console.WriteLine();
                 Console.WriteLine("____________________________");
                 Console.WriteLine("Your options:");
@@ -73,7 +86,7 @@ namespace Sorteper
 
                         foreach (string duplicate in game.HumanPlayer.RemoveDuplicates())
                         {
-                            Console.WriteLine("Removed a pair of " + duplicate + " from your deck!");
+                            Console.WriteLine("Removed a pair of " + duplicate + " from your hand!");
                         }
                         Console.WriteLine("____________________________");
 
@@ -86,7 +99,7 @@ namespace Sorteper
                         Console.WriteLine("");
                         foreach (string duplicate in game.CPU.RemoveDuplicates())
                         {
-                            Console.WriteLine("Removed a pair of " + duplicate + " from your opponents deck!");
+                            Console.WriteLine("Removed a pair of " + duplicate + " from your opponents hand!");
                         }
                         Console.WriteLine("____________________________");                   
                         Console.ReadKey();
