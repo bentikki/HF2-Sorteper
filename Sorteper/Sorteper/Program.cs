@@ -11,15 +11,16 @@ namespace Sorteper
     {
         static void Main(string[] args)
         {
-
+            //Initializes the main game class. This is used to run the entire game. Making it not dependant on the gui type.
             Game game = new OldMaidGame();
             Console.WriteLine("Game name: " + game.GameName);
 
             Console.Write("Write your name: ");
             string playerName = Console.ReadLine();
 
+            //Adding a human player from the user input.
             game.AddHumanPlayer(playerName);
-            game.DealCards();
+            game.DealCards(); //Dealing cards.
 
             Console.WriteLine();
             Console.WriteLine("____________________________");
@@ -28,6 +29,7 @@ namespace Sorteper
             Console.WriteLine("____________________________");
             Console.WriteLine();
 
+            //Displays the removed duplicates from the user's and CPU-player's hand.  
             foreach (string duplicate in game.HumanPlayer.RemoveDuplicates())
             {
                 Console.WriteLine("Removed a pair of " + duplicate + " from your hand!");
@@ -48,7 +50,7 @@ namespace Sorteper
                 Console.WriteLine("Your hand:");
                 foreach (Card card in game.HumanPlayer.Hand)
                 {
-                    Console.WriteLine(card.CardName);
+                    Console.WriteLine(card.CardName); //Displays the player's current hand.
                 }
                 string playerWithOldMaidMessage;
                 if (game.HumanPlayer.HasOldMaid())
@@ -61,7 +63,8 @@ namespace Sorteper
                 }
                 Console.WriteLine("____________________________");
                 Console.WriteLine();
-                Console.WriteLine(playerWithOldMaidMessage);
+                //Displays a message with information about who has the Old Maid card.
+                Console.WriteLine(playerWithOldMaidMessage); 
                 Console.WriteLine("____________________________");
                 Console.WriteLine();
                 Console.WriteLine("____________________________");
@@ -72,12 +75,15 @@ namespace Sorteper
                 Console.WriteLine("2. Shuffle your hand.");
                 Console.WriteLine("____________________________");
 
+                //Switch case of the main menu options per turn.
                 switch (GetMenuInput(1, 2))
                 {
                     case 1:
                         //1. Take card from opponents hand.
                         Console.WriteLine();
                         Console.WriteLine("____________________________");
+                        //Displays menu of all the cards in the CPU player's hand. 
+                        //This allows the player to take a card from the opponents hand.
                         for (int i = 0; i < game.CPU.Hand.Count; i++)
                         {
                             Console.WriteLine(i + ". Take card number:" + i);
@@ -91,6 +97,7 @@ namespace Sorteper
                         Console.WriteLine("You have taken " + cardName + " from your opponent!");
                         Console.WriteLine();
 
+                        //Removes duplicates from the players hand, after a new ccard has been taken.
                         foreach (string duplicate in game.HumanPlayer.RemoveDuplicates())
                         {
                             Console.WriteLine("Removed a pair of " + duplicate + " from your hand!");
@@ -102,7 +109,7 @@ namespace Sorteper
                         //PC takes a turn.
                         Console.WriteLine();
                         Console.WriteLine("____________________________");
-                        Console.WriteLine(game.TakeCPUTurn());
+                        Console.WriteLine(game.TakeCPUTurn()); //Lets the PC take a turn.
                         Console.WriteLine("");
                         foreach (string duplicate in game.CPU.RemoveDuplicates())
                         {
@@ -114,6 +121,7 @@ namespace Sorteper
                         break;
                     case 2:
                         //2. Shuffle your hand.
+                        //Allows the player to shuffle their hand. This does not take a turn.
                         game.HumanPlayer.ShuffleHand();
                         Console.WriteLine();
                         Console.WriteLine("____________________________");
@@ -133,7 +141,8 @@ namespace Sorteper
             Console.WriteLine("____________________________");
             Console.ReadKey();
         }
-     
+        
+        //Simple menu validater class. GUI specifik.
         static byte GetMenuInput(int start, int end)
         {
             bool menuError = false;

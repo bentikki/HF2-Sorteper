@@ -10,7 +10,9 @@ namespace Sorteper.Classes
     {
         public OldMaidDeck()
         {
-            this.suits = new List<string> { "Monkeys", "Cats", "Cows", "Sparrows", "Lions", "Dolphins", "Dogs", "Whales", "Horses", "Snakes", "Sheeps", "Snails", "Lizards", "Turtles" };
+            //Sets the suits.
+            this.suits = new List<string> { "Monkeys", "Cats", "Cows", "Sparrows", "Lions", "Dolphins", "Dogs", "Horses", "Snakes", "Snails", "Lizards", "Turtles" };
+            //Sets the number of values cards are allowed to have. Sat to 2, means that 2 cards of each type will be made. 
             this.CardValues = 2;
 
             this.CreateDeck();

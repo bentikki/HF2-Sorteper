@@ -28,6 +28,7 @@ namespace Sorteper.Classes
             this.handOfCards.Add(card);
         }
 
+        //Method for the player to shuffle their hand.
         public void ShuffleHand()
         {
             Random rand = new Random();
@@ -55,6 +56,9 @@ namespace Sorteper.Classes
             this.AddCardToHand(addedCard);
             return addedCard;
         }
+
+        //Method to remove pairs from the player's hand.
+        //Does so by checking if any pairs exists, and returning a list of all the removed pairs. 
         public List<string> RemoveDuplicates()
         {
             List<string> removedList = new List<string>();

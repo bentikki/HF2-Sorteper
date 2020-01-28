@@ -21,18 +21,24 @@ namespace Sorteper.Classes
         public Player HumanPlayer { get { return this.humanPlayer; } }
         public Player CPU { get { return this.cpu; } }
 
+        //Constructor for the game object. Creates a PC-player.
         public Game()
         {
             Player cpuPlayer = new Player("CPU");
             this.playerList.Add(cpuPlayer);
             this.cpu = cpuPlayer;
         }
+
+        //Method to add a human player. Takes a string parameter. 
         public void AddHumanPlayer(string playerName)
         {
             Player player = new Player(playerName + "-Player", true);
             this.playerList.Add(player);
             this.humanPlayer = player;
         }
+
+        //Method to deal cards to the players. 
+        //Uses the deck.
         public void DealCards()
         {
             while (this.deck.NumberOfCardsInDeck > 0)
@@ -46,6 +52,10 @@ namespace Sorteper.Classes
                 }
             }
         }
+
+        //Method for the CPU player to take a turn.
+        //Simply takes a random card from your hand and shuffles it owns hand.
+        //Returns a string containing the message of what happened on the CPU players turn.
         public string TakeCPUTurn()
         {
             if (this.NewRound())
